@@ -1,0 +1,12 @@
+## Interface: 30300
+## Title: |cffd4b46aХроники Этерны|r
+## Notes: Путеводитель по моду «Хроники Этерны» — цепочки квестов, лагерь Талига, NPC и награды.
+## Notes-ruRU: Путеводитель по моду «Хроники Этерны» — цепочки квестов, лагерь Талига, NPC и награды.
+## Author: MultiTool
+## Version: 1.0.0
+## SavedVariables: EternaChroniclesDB
+## X-Category: Quests
+
+Core.lua
+Data.lua
+UI.lua
