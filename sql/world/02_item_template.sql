@@ -1,4 +1,4 @@
--- =====================================================================
+﻿-- =====================================================================
 --  Хроники Этерны — предметы (версия без явного списка колонок)
 --  Файл: 02_item_template.sql
 --  Клонируем проверенные строки-эталоны из item_template и правим нужные
@@ -14,7 +14,6 @@ DELETE FROM `item_template` WHERE `entry` BETWEEN 910100 AND 910199;
 -- ---------------------------------------------------------------------
 -- 910100 Клинок Этерны — копия Shadowfang с новыми именем/уроном
 -- ---------------------------------------------------------------------
-DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_item`;
 CREATE TEMPORARY TABLE `tmp_eterna_item` AS
   SELECT * FROM `item_template` WHERE `entry` = 1482;
 UPDATE `tmp_eterna_item` SET
@@ -31,11 +30,13 @@ UPDATE `tmp_eterna_item` SET
   `bonding` = 1,
   `Quality` = 3;
 INSERT INTO `item_template` SELECT * FROM `tmp_eterna_item`;
-DROP TEMPORARY TABLE `tmp_eterna_item`;
 
 -- ---------------------------------------------------------------------
 -- 910101 Мантия Вестника — копия Thick Cloth Vest
 -- ---------------------------------------------------------------------
+DELETE FROM `tmp_eterna_item`;
+TRUNCATE TABLE `tmp_eterna_item`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_item`;
 CREATE TEMPORARY TABLE `tmp_eterna_item` AS
   SELECT * FROM `item_template` WHERE `entry` = 200;
 UPDATE `tmp_eterna_item` SET
@@ -50,11 +51,13 @@ UPDATE `tmp_eterna_item` SET
   `BuyPrice` = 0,
   `bonding` = 1;
 INSERT INTO `item_template` SELECT * FROM `tmp_eterna_item`;
-DROP TEMPORARY TABLE `tmp_eterna_item`;
 
 -- ---------------------------------------------------------------------
 -- 910102 Печать Архива — квестовый предмет (Flags=2048)
 -- ---------------------------------------------------------------------
+DELETE FROM `tmp_eterna_item`;
+TRUNCATE TABLE `tmp_eterna_item`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_item`;
 CREATE TEMPORARY TABLE `tmp_eterna_item` AS
   SELECT * FROM `item_template` WHERE `entry` = 3668;
 UPDATE `tmp_eterna_item` SET
@@ -70,11 +73,13 @@ UPDATE `tmp_eterna_item` SET
   `BuyPrice` = 0,
   `SellPrice` = 0;
 INSERT INTO `item_template` SELECT * FROM `tmp_eterna_item`;
-DROP TEMPORARY TABLE `tmp_eterna_item`;
 
 -- ---------------------------------------------------------------------
 -- 910103 Осколок Кэртианы — квестовый предмет
 -- ---------------------------------------------------------------------
+DELETE FROM `tmp_eterna_item`;
+TRUNCATE TABLE `tmp_eterna_item`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_item`;
 CREATE TEMPORARY TABLE `tmp_eterna_item` AS
   SELECT * FROM `item_template` WHERE `entry` = 2589;
 UPDATE `tmp_eterna_item` SET
@@ -92,7 +97,6 @@ UPDATE `tmp_eterna_item` SET
   `BuyPrice` = 0,
   `SellPrice` = 0;
 INSERT INTO `item_template` SELECT * FROM `tmp_eterna_item`;
-DROP TEMPORARY TABLE `tmp_eterna_item`;
 
 -- ---------------------------------------------------------------------
 -- Локализация названий

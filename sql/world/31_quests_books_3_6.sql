@@ -1,4 +1,4 @@
--- =====================================================================
+﻿-- =====================================================================
 --  Хроники Этерны — книги 3-6: цепочки квестов
 --  Файл: 31_quests_books_3_6.sql
 --  Диапазон: 916000-916399
@@ -21,7 +21,6 @@ DELETE FROM `quest_offer_reward` WHERE `ID` BETWEEN 916000 AND 916399;
 DELETE FROM `creature_queststarter` WHERE `quest` BETWEEN 916000 AND 916399;
 DELETE FROM `creature_questender` WHERE `quest` BETWEEN 916000 AND 916399;
 
-DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 DROP TABLE IF EXISTS `tmp_q36`;
 
 -- =====================================================================
@@ -53,6 +52,9 @@ UPDATE `tmp_q36` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 
 -- 916001 «Письмо в ловушке»
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916001, `QuestType`=2, `QuestLevel`=61, `MinLevel`=56,
@@ -73,6 +75,9 @@ UPDATE `tmp_q36` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 
 -- 916002 «Ловушка срабатывает»
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916002, `QuestType`=2, `QuestLevel`=62, `MinLevel`=56,
@@ -93,6 +98,9 @@ UPDATE `tmp_q36` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 
 -- 916003 «Ловушка для орла» — финал книги 3
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916003, `QuestType`=2, `QuestLevel`=63, `MinLevel`=56,
@@ -118,6 +126,9 @@ INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 -- =====================================================================
 
 -- 916010 «Бросок на юг»
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916010, `QuestType`=2, `QuestLevel`=62, `MinLevel`=57,
@@ -138,6 +149,9 @@ UPDATE `tmp_q36` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 
 -- 916011 «Перевалы»
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916011, `QuestType`=2, `QuestLevel`=62, `MinLevel`=57,
@@ -158,6 +172,9 @@ UPDATE `tmp_q36` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 
 -- 916012 «Хлеб юга»
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916012, `QuestType`=2, `QuestLevel`=62, `MinLevel`=57,
@@ -178,6 +195,9 @@ UPDATE `tmp_q36` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 
 -- 916013 «Бросок на юг» — финал книги 4
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916013, `QuestType`=2, `QuestLevel`=63, `MinLevel`=57,
@@ -203,6 +223,9 @@ INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 -- =====================================================================
 
 -- 916020 «Стены и слухи»
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916020, `QuestType`=2, `QuestLevel`=63, `MinLevel`=58,
@@ -223,6 +246,9 @@ UPDATE `tmp_q36` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 
 -- 916021 «Ключ к воротам»
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916021, `QuestType`=2, `QuestLevel`=63, `MinLevel`=58,
@@ -243,6 +269,9 @@ UPDATE `tmp_q36` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 
 -- 916022 «Ночь на стене»
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916022, `QuestType`=2, `QuestLevel`=63, `MinLevel`=58,
@@ -263,6 +292,9 @@ UPDATE `tmp_q36` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 
 -- 916023 «За неприступными стенами» — финал книги 5
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916023, `QuestType`=2, `QuestLevel`=63, `MinLevel`=58,
@@ -288,6 +320,9 @@ INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 -- =====================================================================
 
 -- 916030 «Голос с юга»
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916030, `QuestType`=2, `QuestLevel`=63, `MinLevel`=59,
@@ -308,6 +343,9 @@ UPDATE `tmp_q36` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 
 -- 916031 «Сердце помнит»
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916031, `QuestType`=2, `QuestLevel`=64, `MinLevel`=59,
@@ -328,6 +366,9 @@ UPDATE `tmp_q36` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 
 -- 916032 «Клятва у Сердца»
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916032, `QuestType`=2, `QuestLevel`=64, `MinLevel`=59,
@@ -348,6 +389,9 @@ UPDATE `tmp_q36` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 
 -- 916033 «Сердце Этерны» — финал всех книг
+DELETE FROM `tmp_q36`;
+TRUNCATE TABLE `tmp_q36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q36`;
 CREATE TEMPORARY TABLE `tmp_q36` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q36` SET
   `ID`=916033, `QuestType`=2, `QuestLevel`=64, `MinLevel`=59,
@@ -369,7 +413,6 @@ UPDATE `tmp_q36` SET
   `Flags`=0;
 INSERT INTO `quest_template` SELECT * FROM `tmp_q36`;
 
-DROP TEMPORARY TABLE `tmp_q36`;
 
 -- =====================================================================
 --  Цепочки (PrevQuestID / NextQuestID)

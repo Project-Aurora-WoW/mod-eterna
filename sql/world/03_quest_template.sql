@@ -1,4 +1,4 @@
--- =====================================================================
+﻿-- =====================================================================
 --  Хроники Этерны — квесты (версия без явного списка колонок)
 --  Файл: 03_quest_template.sql
 --  Клонируем проверенную строку quest_template (entry 2 «Sharptusk
@@ -19,7 +19,6 @@ DELETE FROM `creature_questender` WHERE `quest` BETWEEN 915000 AND 915099;
 -- ---------------------------------------------------------------------
 -- 915000 «Вестник с севера» — старт от Фернандо (910000)
 -- ---------------------------------------------------------------------
-DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_quest`;
 CREATE TEMPORARY TABLE `tmp_eterna_quest` AS
   SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_eterna_quest` SET
@@ -44,6 +43,9 @@ UPDATE `tmp_eterna_quest` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_eterna_quest`;
 
 -- 915001 «Леопард Этерны»
+DELETE FROM `tmp_eterna_quest`;
+TRUNCATE TABLE `tmp_eterna_quest`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_quest`;
 CREATE TEMPORARY TABLE `tmp_eterna_quest` AS
   SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_eterna_quest` SET
@@ -68,6 +70,9 @@ UPDATE `tmp_eterna_quest` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_eterna_quest`;
 
 -- 915002 «Клинки Дриксена» — убить 8 солдат Дриксена (910020)
+DELETE FROM `tmp_eterna_quest`;
+TRUNCATE TABLE `tmp_eterna_quest`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_quest`;
 CREATE TEMPORARY TABLE `tmp_eterna_quest` AS
   SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_eterna_quest` SET
@@ -92,6 +97,9 @@ UPDATE `tmp_eterna_quest` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_eterna_quest`;
 
 -- 915003 «Печать Архива» — добыть предмет 910102 у мага Гайифы (910030)
+DELETE FROM `tmp_eterna_quest`;
+TRUNCATE TABLE `tmp_eterna_quest`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_quest`;
 CREATE TEMPORARY TABLE `tmp_eterna_quest` AS
   SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_eterna_quest` SET
@@ -116,6 +124,9 @@ UPDATE `tmp_eterna_quest` SET
 INSERT INTO `quest_template` SELECT * FROM `tmp_eterna_quest`;
 
 -- 915004 «Король и Архив» — победить Гайефа (910040)
+DELETE FROM `tmp_eterna_quest`;
+TRUNCATE TABLE `tmp_eterna_quest`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_quest`;
 CREATE TEMPORARY TABLE `tmp_eterna_quest` AS
   SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_eterna_quest` SET
@@ -138,7 +149,6 @@ UPDATE `tmp_eterna_quest` SET
   `ObjectiveText1` = 'Магистр Гайеф побеждён',
   `Flags` = 0;
 INSERT INTO `quest_template` SELECT * FROM `tmp_eterna_quest`;
-DROP TEMPORARY TABLE `tmp_eterna_quest`;
 
 -- ---------------------------------------------------------------------
 -- quest_template_addon: цепочка

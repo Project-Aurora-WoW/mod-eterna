@@ -1,4 +1,4 @@
--- =====================================================================
+﻿-- =====================================================================
 --  Хроники Этерны — расширенные цепочки (3 новые ветки)
 --  Файл: 11_quest_chains.sql
 --  Диапазон: 915100-915199
@@ -34,7 +34,6 @@ DELETE FROM `quest_offer_reward` WHERE `ID` BETWEEN 915100 AND 915199;
 DELETE FROM `creature_queststarter` WHERE `quest` BETWEEN 915100 AND 915199;
 DELETE FROM `creature_questender` WHERE `quest` BETWEEN 915100 AND 915199;
 
-DROP TEMPORARY TABLE IF EXISTS `tmp_q`;
 DROP TABLE IF EXISTS `tmp_q`;
 
 -- ---------------------------------------------------------------------
@@ -62,6 +61,9 @@ UPDATE `tmp_q` SET
   `Flags`=0;
 INSERT INTO `quest_template` SELECT * FROM `tmp_q`;
 
+DELETE FROM `tmp_q`;
+TRUNCATE TABLE `tmp_q`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q`;
 CREATE TEMPORARY TABLE `tmp_q` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q` SET
   `ID`=915101, `QuestType`=2, `QuestLevel`=61, `MinLevel`=55,
@@ -82,6 +84,9 @@ UPDATE `tmp_q` SET
   `Flags`=0;
 INSERT INTO `quest_template` SELECT * FROM `tmp_q`;
 
+DELETE FROM `tmp_q`;
+TRUNCATE TABLE `tmp_q`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q`;
 CREATE TEMPORARY TABLE `tmp_q` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q` SET
   `ID`=915102, `QuestType`=2, `QuestLevel`=61, `MinLevel`=55,
@@ -106,6 +111,9 @@ INSERT INTO `quest_template` SELECT * FROM `tmp_q`;
 -- ---------------------------------------------------------------------
 -- ЦЕПОЧКА 3 «Инквизиция» — линия Инквизитора Кая
 -- ---------------------------------------------------------------------
+DELETE FROM `tmp_q`;
+TRUNCATE TABLE `tmp_q`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q`;
 CREATE TEMPORARY TABLE `tmp_q` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q` SET
   `ID`=915110, `QuestType`=2, `QuestLevel`=60, `MinLevel`=55,
@@ -125,6 +133,9 @@ UPDATE `tmp_q` SET
   `Flags`=0;
 INSERT INTO `quest_template` SELECT * FROM `tmp_q`;
 
+DELETE FROM `tmp_q`;
+TRUNCATE TABLE `tmp_q`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q`;
 CREATE TEMPORARY TABLE `tmp_q` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q` SET
   `ID`=915111, `QuestType`=2, `QuestLevel`=61, `MinLevel`=55,
@@ -144,6 +155,9 @@ UPDATE `tmp_q` SET
   `Flags`=0;
 INSERT INTO `quest_template` SELECT * FROM `tmp_q`;
 
+DELETE FROM `tmp_q`;
+TRUNCATE TABLE `tmp_q`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q`;
 CREATE TEMPORARY TABLE `tmp_q` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q` SET
   `ID`=915112, `QuestType`=2, `QuestLevel`=62, `MinLevel`=55,
@@ -163,6 +177,9 @@ UPDATE `tmp_q` SET
   `Flags`=0;
 INSERT INTO `quest_template` SELECT * FROM `tmp_q`;
 
+DELETE FROM `tmp_q`;
+TRUNCATE TABLE `tmp_q`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q`;
 CREATE TEMPORARY TABLE `tmp_q` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q` SET
   `ID`=915113, `QuestType`=2, `QuestLevel`=62, `MinLevel`=55,
@@ -185,6 +202,9 @@ INSERT INTO `quest_template` SELECT * FROM `tmp_q`;
 -- ---------------------------------------------------------------------
 -- ЦЕПОЧКА 4 «Камни Джалады» — хранительская линия
 -- ---------------------------------------------------------------------
+DELETE FROM `tmp_q`;
+TRUNCATE TABLE `tmp_q`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q`;
 CREATE TEMPORARY TABLE `tmp_q` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q` SET
   `ID`=915120, `QuestType`=2, `QuestLevel`=60, `MinLevel`=55,
@@ -203,6 +223,9 @@ UPDATE `tmp_q` SET
   `Flags`=0;
 INSERT INTO `quest_template` SELECT * FROM `tmp_q`;
 
+DELETE FROM `tmp_q`;
+TRUNCATE TABLE `tmp_q`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q`;
 CREATE TEMPORARY TABLE `tmp_q` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q` SET
   `ID`=915121, `QuestType`=2, `QuestLevel`=61, `MinLevel`=55,
@@ -221,6 +244,9 @@ UPDATE `tmp_q` SET
   `Flags`=0;
 INSERT INTO `quest_template` SELECT * FROM `tmp_q`;
 
+DELETE FROM `tmp_q`;
+TRUNCATE TABLE `tmp_q`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q`;
 CREATE TEMPORARY TABLE `tmp_q` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q` SET
   `ID`=915122, `QuestType`=2, `QuestLevel`=61, `MinLevel`=55,
@@ -239,6 +265,9 @@ UPDATE `tmp_q` SET
   `Flags`=0;
 INSERT INTO `quest_template` SELECT * FROM `tmp_q`;
 
+DELETE FROM `tmp_q`;
+TRUNCATE TABLE `tmp_q`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q`;
 CREATE TEMPORARY TABLE `tmp_q` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q` SET
   `ID`=915123, `QuestType`=2, `QuestLevel`=62, `MinLevel`=55,
@@ -257,6 +286,9 @@ UPDATE `tmp_q` SET
   `Flags`=0;
 INSERT INTO `quest_template` SELECT * FROM `tmp_q`;
 
+DELETE FROM `tmp_q`;
+TRUNCATE TABLE `tmp_q`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_q`;
 CREATE TEMPORARY TABLE `tmp_q` AS SELECT * FROM `quest_template` WHERE `ID` = 1444;
 UPDATE `tmp_q` SET
   `ID`=915124, `QuestType`=2, `QuestLevel`=62, `MinLevel`=55,
@@ -275,7 +307,6 @@ UPDATE `tmp_q` SET
   `ObjectiveText1`='Магистр Душ повержен',
   `Flags`=0;
 
-DROP TEMPORARY TABLE `tmp_q`;
 
 -- ---------------------------------------------------------------------
 -- Цепочки (PrevQuestID / NextQuestID)

@@ -1,4 +1,4 @@
--- =====================================================================
+﻿-- =====================================================================
 --  Хроники Этерны — книги 3-6: предметы
 --  Файл: 32_items_books_3_6.sql
 --  Диапазон: 910140-910199
@@ -11,7 +11,6 @@ SET NAMES utf8mb4;
 DELETE FROM `item_template` WHERE `entry` BETWEEN 910140 AND 910199;
 DELETE FROM `item_template_locale` WHERE `ID` BETWEEN 910140 AND 910199;
 
-DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 DROP TABLE IF EXISTS `tmp_it36`;
 
 -- ---------------------------------------------------------------------
@@ -28,6 +27,9 @@ UPDATE `tmp_it36` SET
 INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 
 -- 910141 Клинок Ловчего — одноручный меч, финал книги 3
+DELETE FROM `tmp_it36`;
+TRUNCATE TABLE `tmp_it36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 CREATE TEMPORARY TABLE `tmp_it36` AS SELECT * FROM `item_template` WHERE `entry` = 910112;
 UPDATE `tmp_it36` SET
   `entry`=910141, `name`='Клинок Ловчего',
@@ -37,6 +39,9 @@ UPDATE `tmp_it36` SET
 INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 
 -- 910142 Перевязь орлов — кожа, запястья
+DELETE FROM `tmp_it36`;
+TRUNCATE TABLE `tmp_it36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 CREATE TEMPORARY TABLE `tmp_it36` AS SELECT * FROM `item_template` WHERE `entry` = 910124;
 UPDATE `tmp_it36` SET
   `entry`=910142, `name`='Перевязь орлов',
@@ -46,6 +51,9 @@ UPDATE `tmp_it36` SET
 INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 
 -- 910143 Перья тени — аксессуар
+DELETE FROM `tmp_it36`;
+TRUNCATE TABLE `tmp_it36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 CREATE TEMPORARY TABLE `tmp_it36` AS SELECT * FROM `item_template` WHERE `entry` = 910131;
 UPDATE `tmp_it36` SET
   `entry`=910143, `name`='Перья тени',
@@ -59,6 +67,9 @@ INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 -- ---------------------------------------------------------------------
 
 -- 910144 Ятаган юга — одноручный меч, финал книги 4
+DELETE FROM `tmp_it36`;
+TRUNCATE TABLE `tmp_it36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 CREATE TEMPORARY TABLE `tmp_it36` AS SELECT * FROM `item_template` WHERE `entry` = 910112;
 UPDATE `tmp_it36` SET
   `entry`=910144, `name`='Ятаган юга',
@@ -68,6 +79,9 @@ UPDATE `tmp_it36` SET
 INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 
 -- 910145 Плащ южного ветра — плащ
+DELETE FROM `tmp_it36`;
+TRUNCATE TABLE `tmp_it36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 CREATE TEMPORARY TABLE `tmp_it36` AS SELECT * FROM `item_template` WHERE `entry` = 910123;
 UPDATE `tmp_it36` SET
   `entry`=910145, `name`='Плащ южного ветра',
@@ -77,6 +91,9 @@ UPDATE `tmp_it36` SET
 INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 
 -- 910146 Сапоги перевала — кожа, ступни
+DELETE FROM `tmp_it36`;
+TRUNCATE TABLE `tmp_it36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 CREATE TEMPORARY TABLE `tmp_it36` AS SELECT * FROM `item_template` WHERE `entry` = 910121;
 UPDATE `tmp_it36` SET
   `entry`=910146, `name`='Сапоги перевала',
@@ -90,6 +107,9 @@ INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 -- ---------------------------------------------------------------------
 
 -- 910147 Щит Стражи Этерны — аксессуар, финал книги 5
+DELETE FROM `tmp_it36`;
+TRUNCATE TABLE `tmp_it36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 CREATE TEMPORARY TABLE `tmp_it36` AS SELECT * FROM `item_template` WHERE `entry` = 910131;
 UPDATE `tmp_it36` SET
   `entry`=910147, `name`='Знак Стражи Этерны',
@@ -99,6 +119,9 @@ UPDATE `tmp_it36` SET
 INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 
 -- 910148 Наплечье Стражи — кольчуга, плечи
+DELETE FROM `tmp_it36`;
+TRUNCATE TABLE `tmp_it36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 CREATE TEMPORARY TABLE `tmp_it36` AS SELECT * FROM `item_template` WHERE `entry` = 910126;
 UPDATE `tmp_it36` SET
   `entry`=910148, `name`='Наплечье Стражи',
@@ -108,6 +131,9 @@ UPDATE `tmp_it36` SET
 INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 
 -- 910149 Ключ ворот — аксессуар
+DELETE FROM `tmp_it36`;
+TRUNCATE TABLE `tmp_it36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 CREATE TEMPORARY TABLE `tmp_it36` AS SELECT * FROM `item_template` WHERE `entry` = 910131;
 UPDATE `tmp_it36` SET
   `entry`=910149, `name`='Ключ ворот',
@@ -121,6 +147,9 @@ INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 -- ---------------------------------------------------------------------
 
 -- 910150 Осколок Сердца — квестовый предмет
+DELETE FROM `tmp_it36`;
+TRUNCATE TABLE `tmp_it36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 CREATE TEMPORARY TABLE `tmp_it36` AS SELECT * FROM `item_template` WHERE `entry` = 910119;
 UPDATE `tmp_it36` SET
   `entry`=910150, `name`='Осколок Сердца',
@@ -130,6 +159,9 @@ UPDATE `tmp_it36` SET
 INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 
 -- 910151 Сердце Этерны, Клинок — легендарный меч, финал всех книг
+DELETE FROM `tmp_it36`;
+TRUNCATE TABLE `tmp_it36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 CREATE TEMPORARY TABLE `tmp_it36` AS SELECT * FROM `item_template` WHERE `entry` = 910115;
 UPDATE `tmp_it36` SET
   `entry`=910151, `name`='Сердце Этерны',
@@ -139,6 +171,9 @@ UPDATE `tmp_it36` SET
 INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 
 -- 910152 Плащ Хранителя Сердца — плащ
+DELETE FROM `tmp_it36`;
+TRUNCATE TABLE `tmp_it36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 CREATE TEMPORARY TABLE `tmp_it36` AS SELECT * FROM `item_template` WHERE `entry` = 910123;
 UPDATE `tmp_it36` SET
   `entry`=910152, `name`='Плащ Хранителя Сердца',
@@ -148,6 +183,9 @@ UPDATE `tmp_it36` SET
 INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 
 -- 910153 Кольцо Этерны — кольцо
+DELETE FROM `tmp_it36`;
+TRUNCATE TABLE `tmp_it36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 CREATE TEMPORARY TABLE `tmp_it36` AS SELECT * FROM `item_template` WHERE `entry` = 910130;
 UPDATE `tmp_it36` SET
   `entry`=910153, `name`='Кольцо Этерны',
@@ -157,6 +195,9 @@ UPDATE `tmp_it36` SET
 INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 
 -- 910154 Наплечье Хранителей — кольчуга, плечи
+DELETE FROM `tmp_it36`;
+TRUNCATE TABLE `tmp_it36`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_it36`;
 CREATE TEMPORARY TABLE `tmp_it36` AS SELECT * FROM `item_template` WHERE `entry` = 910126;
 UPDATE `tmp_it36` SET
   `entry`=910154, `name`='Наплечье Хранителей',
@@ -165,7 +206,6 @@ UPDATE `tmp_it36` SET
   `bonding`=1, `SellPrice`=8000, `BuyPrice`=0;
 INSERT INTO `item_template` SELECT * FROM `tmp_it36`;
 
-DROP TEMPORARY TABLE `tmp_it36`;
 
 -- =====================================================================
 --  Явная правка типов (клонирование не всегда переносит поля)

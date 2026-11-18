@@ -1,4 +1,4 @@
--- =====================================================================
+﻿-- =====================================================================
 --  Хроники Этерны — книги 3-6: NPC
 --  Файл: 30_npc_books_3_6.sql
 --  Диапазон: 910060-910099
@@ -13,7 +13,6 @@ DELETE FROM `creature_template` WHERE `entry` BETWEEN 910060 AND 910099;
 DELETE FROM `creature_template_model` WHERE `CreatureID` BETWEEN 910060 AND 910099;
 DELETE FROM `creature_template_locale` WHERE `entry` BETWEEN 910060 AND 910099;
 
-DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 DROP TABLE IF EXISTS `tmp_cre`;
 
 -- ---------------------------------------------------------------------
@@ -30,6 +29,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910061 Мастер Венсан — оружейник, торгует трофеями книг 3-6
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_cre` SET
   `entry`=910061, `name`='Мастер Венсан', `subname`='Оружейник Олларов',
@@ -43,6 +45,9 @@ INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 -- ---------------------------------------------------------------------
 
 -- 910070 Орел-Тень — разведчик орлов
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_cre` SET
   `entry`=910070, `name`='Орел-Тень', `subname`='Разведчик орлов',
@@ -53,6 +58,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910071 Ловчий Орлов — элита
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_cre` SET
   `entry`=910071, `name`='Ловчий Орлов', `subname`='Подмастерье Ловчего',
@@ -63,6 +71,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910072 Сам Ловчий — босс книги 3
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 22810;
 UPDATE `tmp_cre` SET
   `entry`=910072, `name`='Ловчий', `subname`='Первый Ловчий Орлов',
@@ -78,6 +89,9 @@ INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 -- ---------------------------------------------------------------------
 
 -- 910080 Магистр Талигского Юга — союзник
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_cre` SET
   `entry`=910080, `name`='Симон Луг', `subname`='Наместник Юга',
@@ -87,6 +101,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910081 Хирдманн Юга — враг
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_cre` SET
   `entry`=910081, `name`='Южный Хирдманн', `subname`='Роты Дриксена',
@@ -97,6 +114,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910082 Капитан юга — босс книги 4
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_cre` SET
   `entry`=910082, `name`='Капитан Южного Хирда', `subname`='Вольные роты',
@@ -111,6 +131,9 @@ INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 -- ---------------------------------------------------------------------
 
 -- 910090 Комендант крепости — союзник
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_cre` SET
   `entry`=910090, `name`='Комендант Дорн', `subname`='Стража Этерны',
@@ -120,6 +143,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910091 Осадный маг Гайифы — враг
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 22810;
 UPDATE `tmp_cre` SET
   `entry`=910091, `name`='Осадный маг Гайифы', `subname`='Круг Осады',
@@ -130,6 +156,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910092 Осадный командир — босс книги 5
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_cre` SET
   `entry`=910092, `name`='Осадный командир', `subname`='Гайифа под стенами',
@@ -144,6 +173,9 @@ INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 -- ---------------------------------------------------------------------
 
 -- 910095 Страж Сердца — союзник, финальный квестодатель
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_cre` SET
   `entry`=910095, `name`='Страж Сердца', `subname`='Последний из Хранителей',
@@ -153,6 +185,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910096 Тёмный Жрец — финальный босс
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 22810;
 UPDATE `tmp_cre` SET
   `entry`=910096, `name`='Тёмный Жрец Этерны', `subname`='Тот, кто тянется к Сердцу',
@@ -164,7 +199,6 @@ UPDATE `tmp_cre` SET
 
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
-DROP TEMPORARY TABLE `tmp_cre`;
 
 -- ---------------------------------------------------------------------
 --  Модели

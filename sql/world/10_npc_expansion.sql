@@ -1,4 +1,4 @@
--- =====================================================================
+﻿-- =====================================================================
 --  Хроники Этерны — расширение: новые NPC четырёх цепочек
 --  Файл: 10_npc_expansion.sql
 --  Диапазон: 910050-910099 (дружелюбные/нейтральные),
@@ -13,7 +13,6 @@ DELETE FROM `creature_template` WHERE `entry` BETWEEN 910022 AND 910099;
 DELETE FROM `creature_template_model` WHERE `CreatureID` BETWEEN 910022 AND 910099;
 DELETE FROM `creature_template_locale` WHERE `entry` BETWEEN 910022 AND 910099;
 
-DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 DROP TABLE IF EXISTS `tmp_cre`;
 
 -- =====================================================================
@@ -29,6 +28,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910051 Леди Айрис — придворная дама, цех «Претендент»
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_cre` SET
   `entry`=910051, `name`='Леди Айрис', `subname`='Фрейлина Талига',
@@ -37,6 +39,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910052 Магистр Ольгерд — советник короля, цех «Претендент»
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_cre` SET
   `entry`=910052, `name`='Магистр Ольгерд', `subname`='Королевский советник',
@@ -45,6 +50,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910053 Инквизитор Кай — цех «Инквизиция»
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_cre` SET
   `entry`=910053, `name`='Инквизитор Кай', `subname`='Служитель Огня',
@@ -53,6 +61,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910054 Мать Кэртиана — хранительница рун, цех «Камни Джалады»
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_cre` SET
   `entry`=910054, `name`='Мать Кэртиана', `subname`='Хранительница Рун',
@@ -65,6 +76,9 @@ INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 -- =====================================================================
 
 -- 910022 Гуннар Тяжёлый — лейтенант Дриксена, босс цепочки 1
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_cre` SET
   `entry`=910022, `name`='Гуннар Тяжёлый', `subname`='Лейтенант Дриксена',
@@ -74,6 +88,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910023 Дриксенский разведчик
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_cre` SET
   `entry`=910023, `name`='Дриксенский разведчик', `subname`='Хирд Севера',
@@ -83,6 +100,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910024 Хирдманн Дриксена
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_cre` SET
   `entry`=910024, `name`='Хирдманн', `subname`='Вольные роты',
@@ -96,6 +116,9 @@ INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 -- =====================================================================
 
 -- 910041 Смотритель Архива — босс цепочки 3
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 22810;
 UPDATE `tmp_cre` SET
   `entry`=910041, `name`='Смотритель Архива', `subname`='Хранитель Гайифы',
@@ -106,6 +129,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910042 Пожиратель Томов — элитный страж
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_cre` SET
   `entry`=910042, `name`='Пожиратель Томов', `subname`='Слуга Архива',
@@ -115,6 +141,9 @@ UPDATE `tmp_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910043 Магистр Душ — финальный босс цепочки 4
+DELETE FROM `tmp_cre`;
+TRUNCATE TABLE `tmp_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 22810;
 UPDATE `tmp_cre` SET
   `entry`=910043, `name`='Магистр Душ', `subname`='Первый Хранитель Камней',
@@ -124,7 +153,6 @@ UPDATE `tmp_cre` SET
   `mingold`=1500, `maxgold`=4000, `ScriptName`='mob_eterna_soulmaster', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
-DROP TEMPORARY TABLE `tmp_cre`;
 
 -- =====================================================================
 --  Модели

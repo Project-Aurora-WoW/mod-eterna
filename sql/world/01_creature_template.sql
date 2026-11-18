@@ -1,4 +1,4 @@
--- =====================================================================
+﻿-- =====================================================================
 --  Хроники Этерны — шаблоны NPC (версия без явного списка колонок)
 --  Файл: 01_creature_template.sql
 --  Схема creature_template в этой сборке AC содержит 55 колонок:
@@ -22,7 +22,6 @@ DELETE FROM `creature_template_model` WHERE `CreatureID` BETWEEN 910000 AND 9199
 DELETE FROM `creature_template_addon` WHERE `entry` BETWEEN 910000 AND 919999;
 DELETE FROM `creature_template_locale` WHERE `entry` BETWEEN 910000 AND 919999;
 
-DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_cre`;
 DROP TABLE IF EXISTS `tmp_eterna_cre`;
 
 -- ---------------------------------------------------------------------
@@ -42,6 +41,9 @@ UPDATE `tmp_eterna_cre` SET
   `ScriptName`='npc_eterna_herold', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 
+DELETE FROM `tmp_eterna_cre`;
+TRUNCATE TABLE `tmp_eterna_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_cre`;
 CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_eterna_cre` SET
@@ -52,6 +54,9 @@ UPDATE `tmp_eterna_cre` SET
   `ScriptName`='npc_eterna_richard', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 
+DELETE FROM `tmp_eterna_cre`;
+TRUNCATE TABLE `tmp_eterna_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_cre`;
 CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_eterna_cre` SET
@@ -62,6 +67,9 @@ UPDATE `tmp_eterna_cre` SET
   `ScriptName`='npc_eterna_aldo', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 
+DELETE FROM `tmp_eterna_cre`;
+TRUNCATE TABLE `tmp_eterna_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_cre`;
 CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_eterna_cre` SET
@@ -72,6 +80,9 @@ UPDATE `tmp_eterna_cre` SET
   `ScriptName`='npc_eterna_kamsi', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 
+DELETE FROM `tmp_eterna_cre`;
+TRUNCATE TABLE `tmp_eterna_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_cre`;
 CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_eterna_cre` SET
@@ -83,6 +94,9 @@ UPDATE `tmp_eterna_cre` SET
 INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 
 -- Стражник Талига, эталон: 1740 Deathguard Saltain
+DELETE FROM `tmp_eterna_cre`;
+TRUNCATE TABLE `tmp_eterna_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_cre`;
 CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_eterna_cre` SET
@@ -96,6 +110,9 @@ INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 -- ---------------------------------------------------------------------
 -- Враждебные NPC Дриксена (фракция 5002), эталон: 1740
 -- ---------------------------------------------------------------------
+DELETE FROM `tmp_eterna_cre`;
+TRUNCATE TABLE `tmp_eterna_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_cre`;
 CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_eterna_cre` SET
@@ -106,6 +123,9 @@ UPDATE `tmp_eterna_cre` SET
   `ScriptName`='mob_eterna_drissen_soldier', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 
+DELETE FROM `tmp_eterna_cre`;
+TRUNCATE TABLE `tmp_eterna_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_cre`;
 CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_eterna_cre` SET
@@ -119,6 +139,9 @@ INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 -- ---------------------------------------------------------------------
 -- Враждебные NPC Гайифы (фракция 5003)
 -- ---------------------------------------------------------------------
+DELETE FROM `tmp_eterna_cre`;
+TRUNCATE TABLE `tmp_eterna_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_cre`;
 CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 22810;
 UPDATE `tmp_eterna_cre` SET
@@ -129,6 +152,9 @@ UPDATE `tmp_eterna_cre` SET
   `MovementType`=1, `ScriptName`='mob_eterna_gaifu_mage', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 
+DELETE FROM `tmp_eterna_cre`;
+TRUNCATE TABLE `tmp_eterna_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_cre`;
 CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_eterna_cre` SET
@@ -142,6 +168,9 @@ INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 -- ---------------------------------------------------------------------
 -- Босс Гайеф
 -- ---------------------------------------------------------------------
+DELETE FROM `tmp_eterna_cre`;
+TRUNCATE TABLE `tmp_eterna_cre`;
+DROP TEMPORARY TABLE IF EXISTS `tmp_eterna_cre`;
 CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 22810;
 UPDATE `tmp_eterna_cre` SET
@@ -153,7 +182,6 @@ UPDATE `tmp_eterna_cre` SET
   `MovementType`=0, `ScriptName`='mob_eterna_gaief', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 
-DROP TEMPORARY TABLE `tmp_eterna_cre`;
 
 -- ---------------------------------------------------------------------
 -- Модели
