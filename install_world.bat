@@ -15,7 +15,7 @@ echo.
 echo  === Хроники Этерны: установка в базу %DB% ===
 echo.
 
-for %%F in (00_factions_real 01_creature_template 02_item_template 03_quest_template 04_spawns 05_factions 06_areatrigger 07_creature_text 08_creature_spells 10_npc_expansion 11_quest_chains 12_spawns_expansion 13_items_lore 14_items_fix 15_quest_rewards) do (
+for %%F in (00_factions_real 01_creature_template 02_item_template 03_quest_template 04_spawns 05_factions 06_areatrigger 07_creature_text 08_creature_spells 10_npc_expansion 11_quest_chains 12_spawns_expansion 13_items_lore 14_items_fix 15_quest_rewards 16_vendors 21_zone_kertianna) do (
     echo  --^> sql\world\%%F.sql
     %MYSQL% -uroot -proot --default-character-set=utf8mb4 --force %DB% < "sql\world\%%F.sql"
     if errorlevel 1 echo     ^(ошибки выше — см. лог^)
