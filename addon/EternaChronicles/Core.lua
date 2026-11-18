@@ -1,15 +1,17 @@
--- EternaChronicles / Core.lua
--- Ядро аддона: загрузка, команды, сохранение, определение статуса квеста.
+-- =====================================================================
+--  EternaChronicles / Core.lua
+--  Ядро аддона: загрузка, команды, сохранение, статус квеста.
+--  Синхронизировано с eterna_quest_registry (32 квеста, 8 цепочек).
+-- =====================================================================
 
 local ADDON = "EternaChronicles"
 EternaChronicles = EternaChronicles or {}
 local Eterna = EternaChronicles
 
-Eterna.VERSION = "1.0.0"
-Eterna.chains = {}          -- заполняется в Data.lua
-Eterna.frame = nil          -- главное окно, создаётся в UI.lua
+Eterna.VERSION = "2.0.0"
+Eterna.chains = {}
+Eterna.frame = nil
 
--- Идентификаторы мода (должны совпадать с sql/world)
 Eterna.IDS = {
     questBase  = 915000,
     npcBase    = 910000,
@@ -23,22 +25,12 @@ Eterna.IDS = {
     campZ      = 150.30,
 }
 
--- ---------------------------------------------------------------------
--- Локализация: только ruRU, язык определяется по клиенту.
--- ---------------------------------------------------------------------
 local LOCALE = GetLocale()
 
 function Eterna.L(strRU)
-    if LOCALE == "ruRU" then
-        return strRU
-    end
     return strRU
 end
 
--- ---------------------------------------------------------------------
--- Утилиты цвета по статусу квеста
---  статус: "done", "active", "available", "locked"
--- ---------------------------------------------------------------------
 local COLORS = {
     done      = "|cff40ff40",
     active    = "|cffffd200",
@@ -50,11 +42,7 @@ function Eterna.ColorStatus(status, text)
     return (COLORS[status] or "|cffffffff") .. text .. "|r"
 end
 
--- Возвращает статус квеста для текущего игрока
--- 1 — не взят (available, если цепочка открыта)
--- 2 — взят и выполняется (active)
--- 3 — выполнен, но не сдан (active)
--- 4 — сдан (done)
+-- 1 — не взят, 2/3 — в журнале, 4 — сдан
 function Eterna.QuestState(questID)
     if not questID or questID == 0 then
         return "locked"
@@ -63,7 +51,7 @@ function Eterna.QuestState(questID)
         return "done"
     end
     for i = 1, (GetNumQuestLogEntries() or 0) do
-        local qTitle, _, _, _, _, _, _, _, _, questIDFromLog = GetQuestLogTitle(i)
+        local _, _, _, _, _, _, _, _, _, questIDFromLog = GetQuestLogTitle(i)
         if questIDFromLog == questID then
             return "active"
         end
@@ -75,7 +63,6 @@ function Eterna.QuestTitle(questID)
     if not questID or questID == 0 then
         return ""
     end
-    -- Сначала журнал (там локализованное имя), затем таблица из Data.lua.
     for i = 1, (GetNumQuestLogEntries() or 0) do
         local qTitle, _, _, _, _, _, _, _, _, questIDFromLog = GetQuestLogTitle(i)
         if questIDFromLog == questID and qTitle and qTitle ~= "" then
@@ -85,39 +72,42 @@ function Eterna.QuestTitle(questID)
     return Eterna.QUEST_TITLES and Eterna.QUEST_TITLES[questID] or ("Квест #" .. questID)
 end
 
--- ---------------------------------------------------------------------
--- Проверка репутации с Талигом
--- ---------------------------------------------------------------------
 function Eterna.GetTaligRep()
     if GetFactionInfoByID then
         local name, _, standingID, barMin, barMax, barValue = GetFactionInfoByID(Eterna.IDS.faction)
         if name then
-            return {
-                name = name,
-                standingID = standingID or 0,
-                value = (barValue or 0),
-                min = barMin or 0,
-                max = barMax or 0,
-            }
+            return { name = name, standingID = standingID or 0,
+                     value = (barValue or 0), min = barMin or 0, max = barMax or 0 }
         end
     end
     return nil
 end
 
--- ---------------------------------------------------------------------
--- Слэш-команды
--- ---------------------------------------------------------------------
-function Eterna.Toggle()
-    if not Eterna.frame then
-        return
+-- Сводка по книгам 1-6
+function Eterna.BookProgress()
+    local books = {}
+    for b = 1, 6 do books[b] = { done = 0, total = 0 } end
+    for _, chain in ipairs(Eterna.chains or {}) do
+        local b = chain.book or 0
+        if books[b] then
+            for _, q in ipairs(chain.quests) do
+                books[b].total = books[b].total + 1
+                if Eterna.QuestState(q) == "done" then
+                    books[b].done = books[b].done + 1
+                end
+            end
+        end
     end
+    return books
+end
+
+function Eterna.Toggle()
+    if not Eterna.frame then return end
     if Eterna.frame:IsShown() then
         Eterna.frame:Hide()
     else
         Eterna.frame:Show()
-        if Eterna.Refresh then
-            Eterna.Refresh()
-        end
+        if Eterna.Refresh then Eterna.Refresh() end
     end
 end
 
@@ -130,20 +120,18 @@ SlashCmdList["ETERNACHRONICLES"] = function(msg)
         print("|cffd4b46aЭтерна|r: настройки окна сброшены.")
         return
     end
-    if msg == "camp" then
-        print("|cffd4b46aЭтерна|r: лагерь Талига — отметить точку на карте: /eterna mark")
+    if msg == "books" then
+        local b = Eterna.BookProgress()
+        for i = 1, 6 do
+            print(string.format("Книга %d: %d/%d", i, b[i].done, b[i].total))
+        end
         return
     end
     Eterna.Toggle()
 end
 
--- ---------------------------------------------------------------------
--- Сохранение позиции окна
--- ---------------------------------------------------------------------
 function Eterna.SavePosition(frame)
-    if not EternaChroniclesDB then
-        EternaChroniclesDB = {}
-    end
+    if not EternaChroniclesDB then EternaChroniclesDB = {} end
     local point, _, relPoint, x, y = frame:GetPoint(1)
     EternaChroniclesDB.point = point
     EternaChroniclesDB.relPoint = relPoint
@@ -153,24 +141,18 @@ end
 
 function Eterna.RestorePosition(frame)
     local db = EternaChroniclesDB
+    frame:ClearAllPoints()
     if db and db.point then
-        frame:ClearAllPoints()
         frame:SetPoint(db.point, UIParent, db.relPoint or db.point, db.x or 0, db.y or 0)
     else
-        frame:ClearAllPoints()
         frame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
     end
 end
 
--- ---------------------------------------------------------------------
--- Приветствие при первом входе
--- ---------------------------------------------------------------------
 local greeted = false
 
 function Eterna.OnLogin()
-    if greeted then
-        return
-    end
+    if greeted then return end
     greeted = true
-    print("|cffd4b46aХроники Этерны|r — путеводитель загружен. Команда: |cffffd200/eterna|r")
+    print("|cffd4b46aХроники Этерны|r — 6 книг, 8 цепочек, 32 квеста. Команда: |cffffd200/eterna|r")
 end
