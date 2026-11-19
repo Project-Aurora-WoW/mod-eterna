@@ -15,7 +15,7 @@ echo.
 echo  === Хроники Этерны: установка в базу %DB% ===
 echo.
 
-for %%F in (00_factions_real 01_creature_template 02_item_template 03_quest_template 04_spawns 05_factions 06_areatrigger 07_creature_text 08_creature_spells 10_npc_expansion 11_quest_chains 12_spawns_expansion 13_items_lore 14_items_fix 15_quest_rewards 16_vendors 21_zone_kertianna 30_npc_books_3_6 31_quests_books_3_6 31b_quests_books_3_6_locale 32_items_books_3_6 33_spawns_books_3_6 40_quest_conditions 41_quest_scriptnames 42_quest_registry 43_gameobjects 50_environment 51_world_objects 52_map_markers 53_game_tele 54_graveyards) do (
+for %%F in (00_factions_real 01_creature_template 02_item_template 03_quest_template 04_spawns 05_factions 06_areatrigger 07_creature_text 08_creature_spells 10_npc_expansion 11_quest_chains 12_spawns_expansion 13_items_lore 14_items_fix 15_quest_rewards 16_vendors 21_zone_kertianna 30_npc_books_3_6 31_quests_books_3_6 31b_quests_books_3_6_locale 32_items_books_3_6 33_spawns_books_3_6 40_quest_conditions 41_quest_scriptnames 42_quest_registry 43_gameobjects 50_environment 51_world_objects 52_map_markers 53_game_tele 54_graveyards 55_restore_gaifu 56_npc_equipment 57_boss_loot 58_npc_text) do (
     echo  --^> sql\world\%%F.sql
     %MYSQL% -uroot -proot --default-character-set=utf8mb4 --force %DB% < "sql\world\%%F.sql"
     if errorlevel 1 echo     ^(ошибки выше — см. лог^)
