@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.log
+client/*_report.txt
+client/*_dump.txt
+client/idi_*.txt
+client/items.tsv
