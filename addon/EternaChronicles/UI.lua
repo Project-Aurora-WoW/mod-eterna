@@ -9,7 +9,7 @@ local Eterna = EternaChronicles
 
 local FRAME_WIDTH  = 600
 local FRAME_HEIGHT = 480
-local TABS = { "Книги", "Цепочки", "Лагерь", "Предметы", "Статус" }
+local TABS = { "Книги", "Цепочки", "Лагерь", "Предметы", "Статус", "Награды" }
 local currentTab = 1
 
 local BOOK_NAMES = {
@@ -287,6 +287,58 @@ local function DrawStatus()
     content:SetHeight(math.abs(y) + 20)
 end
 
+-- ---------------------------------------------------------------------
+-- Вкладка 6: награды
+--  Магазин доступен, когда соответствующая цепочка закрыта целиком.
+--  Предметы выдаются сервером через запрос (см. lua_scripts/eterna).
+-- ---------------------------------------------------------------------
+local function DrawRewards()
+    local content = Eterna.frame.content
+    local y = 0
+    local _, y0 = AddLine(content, y,
+        "|cffd4b46aНаграды|r — открываются за закрытую цепочку.", 20)
+    y = y0 - 6
+    local _, yh = AddLine(content, y,
+        "|cff808080Нажмите «Получить», стоя у Справника лагеря.|r",
+        16, "GameFontNormalSmall")
+    y = yh - 10
+
+    local done = {}
+    for _, chain in ipairs(Eterna.chains) do
+        local closed = true
+        for _, q in ipairs(chain.quests) do
+            if Eterna.QuestState(q) ~= "done" then closed = false break end
+        end
+        done[chain.id] = closed
+
+        local mark = closed and "|cff40ff40готово|r" or "|cff808080закрыто|r"
+        local _, cy = AddLine(content, y,
+            string.format("%s%s|r — %s", chain.color, chain.name, mark), 18)
+        y = cy - 2
+
+        local rewards = Eterna.REWARDS and Eterna.REWARDS[chain.id]
+        if rewards then
+            for _, itemID in ipairs(rewards) do
+                local data = Eterna.ITEMS[itemID]
+                if data then
+                    local qcolor = Eterna.QUALITY_COLORS[data[2]] or "|cffffffff"
+                    local _, iy = AddLine(content, y,
+                        string.format("    %s%s|r |cff606060(%d)|r",
+                            qcolor, data[1], itemID), 14, "GameFontNormalSmall")
+                    y = iy - 1
+                end
+            end
+        elseif chain.quests[1] then
+            local _, iy = AddLine(content, y,
+                "    |cff606060награда не назначена|r", 14, "GameFontNormalSmall")
+            y = iy - 1
+        end
+        y = y - 6
+    end
+
+    content:SetHeight(math.abs(y) + 20)
+end
+
 function Eterna.Refresh()
     if not Eterna.frame then return end
     for i, btn in ipairs(Eterna.frame.tabs) do
@@ -301,8 +353,10 @@ function Eterna.Refresh()
         DrawCamp()
     elseif currentTab == 4 then
         DrawItems()
-    else
+    elseif currentTab == 5 then
         DrawStatus()
+    else
+        DrawRewards()
     end
 end
 
@@ -314,6 +368,7 @@ initFrame:RegisterEvent("QUEST_ACCEPTED")
 initFrame:RegisterEvent("QUEST_TURNED_IN")
 
 local created = false
+local autoShown = false
 
 initFrame:SetScript("OnEvent", function(self, event, arg1)
     if event == "ADDON_LOADED" and arg1 == ADDON then
@@ -329,6 +384,15 @@ initFrame:SetScript("OnEvent", function(self, event, arg1)
             Eterna.frame = CreateMainFrame()
             Eterna.frame:Hide()
             created = true
+        end
+        -- Автопоказ окна кампании при входе: только первый раз за сессию
+        if not autoShown then
+            autoShown = true
+            currentTab = 2
+            if Eterna.frame then
+                Eterna.frame:Show()
+                Eterna.Refresh()
+            end
         end
     elseif event == "QUEST_LOG_UPDATE" or event == "QUEST_ACCEPTED" or event == "QUEST_TURNED_IN" then
         if Eterna.frame and Eterna.frame:IsShown() then Eterna.Refresh() end

@@ -224,6 +224,92 @@ RegisterPlayerEvent(33, function(event, player, quest, questId)  -- QUEST_REWARD
 end)
 
 -- =====================================================================
+--  5a. МАГАЗИН НАГРАД
+--     Награда за цепочку выдаётся один раз, когда цепочка закрыта
+--     целиком. Выдача — только у Справника лагеря (910050).
+-- =====================================================================
+local REWARD_ITEMS = {
+    sword       = { 910111 },
+    pretender   = { 910113, 910127 },
+    inquisition = { 910118, 910125 },
+    jhalada     = { 910115 },
+    eagle       = { 910141, 910143 },
+    south       = { 910144, 910145 },
+    wall        = { 910147, 910149 },
+    heart       = { 910151, 910152, 910153 },
+}
+
+local CHAIN_QUESTS = {
+    sword       = { 915000, 915001, 915002, 915003, 915004 },
+    pretender   = { 915100, 915101, 915102 },
+    inquisition = { 915110, 915111, 915112, 915113 },
+    jhalada     = { 915120, 915121, 915122, 915123, 915124 },
+    eagle       = { 916000, 916001, 916002, 916003 },
+    south       = { 916010, 916011, 916012, 916013 },
+    wall        = { 916020, 916021, 916022, 916023 },
+    heart       = { 916030, 916031, 916032, 916033 },
+}
+
+local CHAIN_ORDER = { "sword", "pretender", "inquisition", "jhalada",
+                      "eagle", "south", "wall", "heart" }
+
+local function chainClosed(player, chainID)
+    local list = CHAIN_QUESTS[chainID]
+    if not list then return false end
+    for _, qid in ipairs(list) do
+        if player:GetQuestStatus(qid) ~= 0 then return false end
+    end
+    return true
+end
+
+local function chainDone(player, chainID)
+    local list = CHAIN_QUESTS[chainID]
+    if not list then return false end
+    for _, qid in ipairs(list) do
+        local status = player:GetQuestStatus(qid)
+        if status ~= 1 and status ~= 2 then return false end
+    end
+    return true
+end
+
+local function giveReward(player, chainID)
+    local items = REWARD_ITEMS[chainID]
+    if not items then return end
+    for _, itemID in ipairs(items) do
+        player:AddItem(itemID, 1)
+    end
+    say(player, string.format("Награда цепочки «%s» получена.",
+        CHAIN_NAMES[chainID] or chainID))
+end
+
+-- Госсип Справника: список цепочек и выдача награды
+RegisterCreatureGossipEvent(ETERNA.NPC_QUARTER, 1, function(event, player, creature)
+    player:GossipClearMenu()
+    player:GossipMenuAddItem(0, "|cffd4b46aНаграды Этерны|r", 0, 1)
+    for i, chainID in ipairs(CHAIN_ORDER) do
+        local closed = chainDone(player, chainID)
+        local label = string.format("%s — %s",
+            CHAIN_NAMES[chainID] or chainID,
+            closed and "получить" or "цепочка не закрыта")
+        player:GossipMenuAddItem(0, label, 0, 10 + i)
+    end
+    player:GossipSendMenu(1, creature)
+end)
+
+RegisterCreatureGossipEvent(ETERNA.NPC_QUARTER, 2, function(event, player, creature,
+        sender, intid, code, menu_id)
+    if intid >= 11 and intid <= 18 then
+        local chainID = CHAIN_ORDER[intid - 10]
+        if chainDone(player, chainID) then
+            giveReward(player, chainID)
+        else
+            say(player, "Цепочка ещё не закрыта.")
+        end
+    end
+    player:GossipComplete()
+end)
+
+-- =====================================================================
 --  6. ПРИВЕТСТВИЕ И СТАТИСТИКА
 -- =====================================================================
 local greeted = {}
