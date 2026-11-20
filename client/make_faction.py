@@ -24,6 +24,7 @@ REP_INDEX_FIELD = 1
 
 NEW_FACTIONS = [
     # (new_id, template_id, name)
+    (5001, 14, 'Талиг'.encode('cp1251')),
     (5002, 14, 'Вольные роты'.encode('cp1251')),
     (5010, 35, 'Оллары'.encode('cp1251')),
 ]
