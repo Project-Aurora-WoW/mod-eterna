@@ -62,7 +62,11 @@ def main():
         off, block = add_string(block, name)
         rec = bytearray(templates[tpl_id])
         struct.pack_into('<I', rec, 0, new_id)
-        struct.pack_into('<i', rec, REP_INDEX_FIELD * 4, new_id)
+        # ReputationIndex — номер слота в массиве из 128 репутаций, а НЕ ID
+        # фракции. Значение >= 128 ломает ReputationMgr::SendInitialReputations:
+        # цикл «for (; a != 128; a++)» не завершается и пакет растёт до краша.
+        # -1 означает «у фракции нет строки в списке репутации».
+        struct.pack_into('<i', rec, REP_INDEX_FIELD * 4, -1)
         struct.pack_into('<I', rec, NAME_FIELD * 4, off)
         struct.pack_into('<I', rec, NAME_MASK_FIELD * 4, 1 << NAME_FIELD)
         new_recs += bytes(rec)
