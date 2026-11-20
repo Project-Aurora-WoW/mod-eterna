@@ -33,7 +33,7 @@ UPDATE `tmp_eterna_cre` SET
   `entry`=910000, `difficulty_entry_1`=0, `difficulty_entry_2`=0, `difficulty_entry_3`=0,
   `KillCredit1`=0, `KillCredit2`=0,
   `name`='Фернандо де Лакома', `subname`='Вестник Талига', `IconName`='',
-  `gossip_menu_id`=0, `minlevel`=60, `maxlevel`=60, `exp`=0, `faction`=5001, `npcflag`=3,
+  `gossip_menu_id`=0, `minlevel`=60, `maxlevel`=60, `exp`=0, `faction`=35, `npcflag`=3,
   `rank`=0, `dmgschool`=0, `DamageModifier`=1, `unit_class`=1,
   `unit_flags`=0, `unit_flags2`=2048, `family`=0, `type`=7, `type_flags`=0,
   `lootid`=0, `pickpocketloot`=0, `skinloot`=0, `mingold`=100, `maxgold`=300,
@@ -48,7 +48,7 @@ CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_eterna_cre` SET
   `entry`=910001, `name`='Ричард Окделл', `subname`='Леопард Этерны',
-  `minlevel`=60, `maxlevel`=60, `exp`=0, `faction`=5001, `npcflag`=3,
+  `minlevel`=60, `maxlevel`=60, `exp`=0, `faction`=35, `npcflag`=3,
   `rank`=0, `unit_class`=1, `unit_flags`=0, `unit_flags2`=2048, `type`=7,
   `lootid`=0, `mingold`=500, `maxgold`=2000, `AIName`='', `MovementType`=0,
   `ScriptName`='npc_eterna_richard', `VerifiedBuild`=12340;
@@ -61,7 +61,7 @@ CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_eterna_cre` SET
   `entry`=910002, `name`='Альдо Ракан', `subname`='Король Талига',
-  `minlevel`=62, `maxlevel`=62, `exp`=0, `faction`=5001, `npcflag`=3,
+  `minlevel`=62, `maxlevel`=62, `exp`=0, `faction`=35, `npcflag`=3,
   `rank`=0, `unit_class`=1, `unit_flags`=0, `unit_flags2`=2048, `type`=7,
   `lootid`=0, `mingold`=0, `maxgold`=0, `AIName`='', `MovementType`=0,
   `ScriptName`='npc_eterna_aldo', `VerifiedBuild`=12340;
@@ -74,10 +74,10 @@ CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_eterna_cre` SET
   `entry`=910003, `name`='Камси', `subname`='Травница Талига',
-  `minlevel`=60, `maxlevel`=60, `exp`=0, `faction`=5001, `npcflag`=3,
+  `minlevel`=60, `maxlevel`=60, `exp`=0, `faction`=35, `npcflag`=3,
   `rank`=0, `unit_class`=1, `unit_flags`=0, `unit_flags2`=2048, `type`=7,
   `lootid`=0, `mingold`=100, `maxgold`=500, `AIName`='', `MovementType`=0,
-  `ScriptName`='npc_eterna_kamsi', `VerifiedBuild`=12340;
+  `ScriptName`='', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 
 DELETE FROM `tmp_eterna_cre`;
@@ -87,7 +87,7 @@ CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_eterna_cre` SET
   `entry`=910004, `name`='Элла', `subname`='Хранительница Архива',
-  `minlevel`=60, `maxlevel`=60, `exp`=0, `faction`=5001, `npcflag`=3,
+  `minlevel`=60, `maxlevel`=60, `exp`=0, `faction`=35, `npcflag`=3,
   `rank`=0, `unit_class`=1, `unit_flags`=0, `unit_flags2`=2048, `type`=7,
   `lootid`=0, `mingold`=100, `maxgold`=500, `AIName`='', `MovementType`=0,
   `ScriptName`='npc_eterna_ella', `VerifiedBuild`=12340;
@@ -101,7 +101,7 @@ CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_eterna_cre` SET
   `entry`=910010, `name`='Стражник Талига', `subname`='Легион Олларов',
-  `minlevel`=58, `maxlevel`=60, `faction`=5001, `npcflag`=0, `rank`=0,
+  `minlevel`=58, `maxlevel`=60, `faction`=35, `npcflag`=0, `rank`=0,
   `unit_flags`=0, `unit_flags2`=2048, `type`=7, `lootid`=0,
   `mingold`=50, `maxgold`=150, `AIName`='', `MovementType`=1,
   `ScriptName`='', `VerifiedBuild`=12340;
@@ -117,10 +117,10 @@ CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_eterna_cre` SET
   `entry`=910020, `name`='Солдат Дриксена', `subname`='Вольные роты',
-  `minlevel`=58, `maxlevel`=60, `faction`=5002, `npcflag`=0, `rank`=1,
+  `minlevel`=58, `maxlevel`=60, `faction`=14, `npcflag`=0, `rank`=1,
   `DamageModifier`=1.1, `unit_flags`=0, `unit_flags2`=0, `type`=7,
   `lootid`=0, `mingold`=80, `maxgold`=250, `AIName`='', `MovementType`=1,
-  `ScriptName`='mob_eterna_drissen_soldier', `VerifiedBuild`=12340;
+  `ScriptName`='', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 
 DELETE FROM `tmp_eterna_cre`;
@@ -130,14 +130,14 @@ CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_eterna_cre` SET
   `entry`=910021, `name`='Офицер Дриксена', `subname`='Капитан роты',
-  `minlevel`=60, `maxlevel`=60, `faction`=5002, `npcflag`=0, `rank`=2,
+  `minlevel`=60, `maxlevel`=60, `faction`=14, `npcflag`=0, `rank`=2,
   `DamageModifier`=1.3, `HealthModifier`=1.4, `unit_flags`=0, `unit_flags2`=0,
   `type`=7, `lootid`=0, `mingold`=200, `maxgold`=600, `AIName`='',
-  `MovementType`=0, `ScriptName`='mob_eterna_drissen_officer', `VerifiedBuild`=12340;
+  `MovementType`=0, `ScriptName`='', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 
 -- ---------------------------------------------------------------------
--- Враждебные NPC Гайифы (фракция 5003)
+-- Враждебные NPC Гайифы (фракция 16 — штатный шаблон «Hostile»)
 -- ---------------------------------------------------------------------
 DELETE FROM `tmp_eterna_cre`;
 TRUNCATE TABLE `tmp_eterna_cre`;
@@ -146,10 +146,10 @@ CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 22810;
 UPDATE `tmp_eterna_cre` SET
   `entry`=910030, `name`='Маг Гайифы', `subname`='Подмастерье Архива',
-  `minlevel`=58, `maxlevel`=60, `faction`=5003, `npcflag`=0, `rank`=1,
+  `minlevel`=58, `maxlevel`=60, `faction`=16, `npcflag`=0, `rank`=1,
   `DamageModifier`=1.2, `unit_class`=8, `unit_flags`=0, `unit_flags2`=0,
   `type`=7, `lootid`=0, `mingold`=100, `maxgold`=300, `AIName`='',
-  `MovementType`=1, `ScriptName`='mob_eterna_gaifu_mage', `VerifiedBuild`=12340;
+  `MovementType`=1, `ScriptName`='', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_eterna_cre`;
 
 DELETE FROM `tmp_eterna_cre`;
@@ -159,7 +159,7 @@ CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 1740;
 UPDATE `tmp_eterna_cre` SET
   `entry`=910031, `name`='Некрофаг', `subname`='Порождение Архива',
-  `minlevel`=55, `maxlevel`=57, `faction`=5003, `npcflag`=0, `rank`=0,
+  `minlevel`=55, `maxlevel`=57, `faction`=16, `npcflag`=0, `rank`=0,
   `unit_flags`=0, `unit_flags2`=0, `type`=7, `lootid`=0,
   `mingold`=20, `maxgold`=80, `AIName`='', `MovementType`=1,
   `ScriptName`='', `VerifiedBuild`=12340;
@@ -175,7 +175,7 @@ CREATE TEMPORARY TABLE `tmp_eterna_cre` AS
   SELECT * FROM `creature_template` WHERE `entry` = 22810;
 UPDATE `tmp_eterna_cre` SET
   `entry`=910040, `name`='Магистр Гайеф', `subname`='Первый из Гайифы',
-  `minlevel`=61, `maxlevel`=61, `faction`=5003, `npcflag`=0, `rank`=3,
+  `minlevel`=61, `maxlevel`=61, `faction`=16, `npcflag`=0, `rank`=3,
   `DamageModifier`=1.5, `HealthModifier`=3, `ManaModifier`=2,
   `ArmorModifier`=1.2, `unit_class`=8, `unit_flags`=0, `unit_flags2`=0,
   `type`=7, `lootid`=0, `mingold`=1000, `maxgold`=3000, `AIName`='',

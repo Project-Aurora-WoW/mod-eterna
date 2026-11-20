@@ -9,9 +9,12 @@
 
 SET NAMES utf8mb4;
 
-DELETE FROM `creature_template` WHERE `entry` BETWEEN 910022 AND 910099;
-DELETE FROM `creature_template_model` WHERE `CreatureID` BETWEEN 910022 AND 910099;
-DELETE FROM `creature_template_locale` WHERE `entry` BETWEEN 910022 AND 910099;
+-- ВНИМАНИЕ: 910030/910031/910040 создаются в 01_creature_template.sql,
+-- поэтому из диапазона удаления они исключены — иначе файл 10 стирает
+-- магов Гайифы, некрофагов и Гаефа.
+DELETE FROM `creature_template` WHERE `entry` BETWEEN 910022 AND 910099 AND `entry` NOT IN (910030, 910031, 910040);
+DELETE FROM `creature_template_model` WHERE `CreatureID` BETWEEN 910022 AND 910099 AND `CreatureID` NOT IN (910030, 910031, 910040);
+DELETE FROM `creature_template_locale` WHERE `entry` BETWEEN 910022 AND 910099 AND `entry` NOT IN (910030, 910031, 910040);
 
 DROP TABLE IF EXISTS `tmp_cre`;
 
@@ -24,7 +27,7 @@ CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `ent
 UPDATE `tmp_cre` SET
   `entry`=910050, `name`='Справник лагеря', `subname`='Провиант Олларов',
   `minlevel`=60, `maxlevel`=60, `faction`=35, `npcflag`=4225,
-  `mingold`=100, `maxgold`=400, `ScriptName`='npc_eterna_quartermaster', `VerifiedBuild`=12340;
+  `mingold`=100, `maxgold`=400, `ScriptName`='', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910051 Леди Айрис — придворная дама, цех «Претендент»
@@ -96,7 +99,7 @@ UPDATE `tmp_cre` SET
   `entry`=910023, `name`='Дриксенский разведчик', `subname`='Хирд Севера',
   `minlevel`=58, `maxlevel`=60, `faction`=14, `npcflag`=0, `rank`=1,
   `unit_flags`=0, `unit_flags2`=0, `MovementType`=1,
-  `mingold`=60, `maxgold`=200, `ScriptName`='mob_eterna_drissen_scout', `VerifiedBuild`=12340;
+  `mingold`=60, `maxgold`=200, `ScriptName`='', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910024 Хирдманн Дриксена
@@ -137,7 +140,7 @@ UPDATE `tmp_cre` SET
   `entry`=910042, `name`='Пожиратель Томов', `subname`='Слуга Архива',
   `minlevel`=59, `maxlevel`=61, `faction`=16, `npcflag`=0, `rank`=1,
   `DamageModifier`=1.25, `HealthModifier`=1.6, `unit_flags`=0, `unit_flags2`=0,
-  `mingold`=150, `maxgold`=450, `ScriptName`='mob_eterna_tome_eater', `VerifiedBuild`=12340;
+  `mingold`=150, `maxgold`=450, `ScriptName`='', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910043 Магистр Душ — финальный босс цепочки 4

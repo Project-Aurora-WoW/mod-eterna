@@ -8,7 +8,7 @@ local ADDON = "EternaChronicles"
 EternaChronicles = EternaChronicles or {}
 local Eterna = EternaChronicles
 
-Eterna.VERSION = "2.0.0"
+Eterna.VERSION = "2.2.0"
 Eterna.chains = {}
 Eterna.frame = nil
 

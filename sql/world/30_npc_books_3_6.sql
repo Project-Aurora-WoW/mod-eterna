@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_cre` SET
   `entry`=910060, `name`='Отец Гектор', `subname`='Священник Талига',
-  `minlevel`=61, `maxlevel`=61, `faction`=5010, `npcflag`=3,
+  `minlevel`=61, `maxlevel`=61, `faction`=35, `npcflag`=3,
   `unit_class`=2, `mingold`=0, `maxgold`=0,
   `ScriptName`='npc_eterna_hector', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
@@ -35,7 +35,7 @@ DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_cre` SET
   `entry`=910061, `name`='Мастер Венсан', `subname`='Оружейник Олларов',
-  `minlevel`=61, `maxlevel`=61, `faction`=5010, `npcflag`=3,
+  `minlevel`=61, `maxlevel`=61, `faction`=35, `npcflag`=3,
   `mingold`=100, `maxgold`=400,
   `ScriptName`='npc_eterna_vencent', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
@@ -54,7 +54,7 @@ UPDATE `tmp_cre` SET
   `minlevel`=60, `maxlevel`=61, `faction`=14, `npcflag`=0, `rank`=1,
   `DamageModifier`=1.15, `unit_flags`=0, `unit_flags2`=0,
   `mingold`=100, `maxgold`=300, `MovementType`=1,
-  `ScriptName`='mob_eterna_eagle_scout', `VerifiedBuild`=12340;
+  `ScriptName`='', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910071 Ловчий Орлов — элита
@@ -67,7 +67,7 @@ UPDATE `tmp_cre` SET
   `minlevel`=61, `maxlevel`=61, `faction`=14, `npcflag`=0, `rank`=2,
   `DamageModifier`=1.35, `HealthModifier`=1.6, `unit_flags`=0, `unit_flags2`=0,
   `mingold`=300, `maxgold`=800, `MovementType`=0,
-  `ScriptName`='mob_eterna_eagle_trapper', `VerifiedBuild`=12340;
+  `ScriptName`='', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910072 Сам Ловчий — босс книги 3
@@ -95,7 +95,7 @@ DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_cre` SET
   `entry`=910080, `name`='Симон Луг', `subname`='Наместник Юга',
-  `minlevel`=62, `maxlevel`=62, `faction`=5010, `npcflag`=3,
+  `minlevel`=62, `maxlevel`=62, `faction`=35, `npcflag`=3,
   `unit_class`=1, `mingold`=0, `maxgold`=0,
   `ScriptName`='npc_eterna_simon', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
@@ -110,7 +110,7 @@ UPDATE `tmp_cre` SET
   `minlevel`=61, `maxlevel`=62, `faction`=14, `npcflag`=0, `rank`=1,
   `DamageModifier`=1.15, `unit_flags`=0, `unit_flags2`=0,
   `mingold`=120, `maxgold`=340, `MovementType`=1,
-  `ScriptName`='mob_eterna_south_raider', `VerifiedBuild`=12340;
+  `ScriptName`='', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910082 Капитан юга — босс книги 4
@@ -137,7 +137,7 @@ DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_cre` SET
   `entry`=910090, `name`='Комендант Дорн', `subname`='Стража Этерны',
-  `minlevel`=62, `maxlevel`=62, `faction`=5010, `npcflag`=3,
+  `minlevel`=62, `maxlevel`=62, `faction`=35, `npcflag`=3,
   `unit_class`=2, `mingold`=0, `maxgold`=0,
   `ScriptName`='npc_eterna_dorn', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
@@ -152,7 +152,7 @@ UPDATE `tmp_cre` SET
   `minlevel`=62, `maxlevel`=63, `faction`=16, `npcflag`=0, `rank`=1,
   `DamageModifier`=1.25, `unit_class`=8, `unit_flags`=0, `unit_flags2`=0,
   `mingold`=150, `maxgold`=400, `MovementType`=1,
-  `ScriptName`='mob_eterna_siege_mage', `VerifiedBuild`=12340;
+  `ScriptName`='', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
 
 -- 910092 Осадный командир — босс книги 5
@@ -179,7 +179,7 @@ DROP TEMPORARY TABLE IF EXISTS `tmp_cre`;
 CREATE TEMPORARY TABLE `tmp_cre` AS SELECT * FROM `creature_template` WHERE `entry` = 2860;
 UPDATE `tmp_cre` SET
   `entry`=910095, `name`='Страж Сердца', `subname`='Последний из Хранителей',
-  `minlevel`=63, `maxlevel`=63, `faction`=5010, `npcflag`=3,
+  `minlevel`=63, `maxlevel`=63, `faction`=35, `npcflag`=3,
   `unit_class`=2, `mingold`=0, `maxgold`=0,
   `ScriptName`='npc_eterna_heart_guard', `VerifiedBuild`=12340;
 INSERT INTO `creature_template` SELECT * FROM `tmp_cre`;
