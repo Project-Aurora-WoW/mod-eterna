@@ -576,7 +576,7 @@ local function DrawCamp()
     local content = Eterna.frame.content
     local y = 0
     local _, y1 = AddLine(content, y,
-        "|cffd4b46aЛагерь Талига|r — Восточные Чумные земли, у Часовни Последней Надежды.", 20)
+        "|cffd4b46aЛагерь Талига|r — Восточные Чумные земли, на плато южнее Часовни Последней Надежды.", 20)
     y = y1 - 2
     local _, yb = AddLine(content, y,
         "|cff808080Клик — перенос · стрелка — трекер · лист — команда в чат.|r",
